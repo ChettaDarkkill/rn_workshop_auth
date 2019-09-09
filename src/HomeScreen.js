@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ImageBackground, TextInput, Button, TouchableOpacity } from 'react-native';
+import { Text, View, ImageBackground, TextInput, Button, TouchableOpacity, Image } from 'react-native';
 
 export default class HomeScreen extends Component {
     render() {
@@ -48,23 +48,31 @@ export default class HomeScreen extends Component {
                             borderRadius: 20,
                             marginRight: 8
                         }} />
-                        <TextInput style={{
-                            flex: 1,
-                            height: 40,
-                            borderRadius: 3,
-                            borderWidth: 1,
-                            borderColor: "#0003",
-                            paddingLeft: 8
-                        }}
+                        <TextInput
+                            secureTextEntry={true}
+                            style={{
+                                flex: 1,
+                                height: 40,
+                                borderRadius: 3,
+                                borderWidth: 1,
+                                borderColor: "#0003",
+                                paddingLeft: 8
+                            }}
                             placeholder="Password" />
                     </View>
                     <View style={{ marginTop: 16 }}>
                         <Button title="Login" />
                     </View>
-                    <TouchableOpacity style={{ marginTop: 8, marginBottom: 16, backgroundColor: "#fff4", height: 40, borderTopEndRadius:5, justifyContent: "center" }}>
+                    <TouchableOpacity style={{ marginTop: 8, marginBottom: 16, backgroundColor: "#fff4", height: 40, borderTopEndRadius: 5, justifyContent: "center" }}>
                         <Text style={{ textAlign: 'center', color: "#0009" }}>Register</Text>
                     </TouchableOpacity>
                 </View>
+                <Image
+                    resizeMode="contain"
+                    source={require("./assets/img/header_react_native.png")} style={{
+                        height: 100,
+                        width: '100%',
+                    }} />
             </ImageBackground>
         );
     }
