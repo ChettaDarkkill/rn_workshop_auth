@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, ImageBackground, TextInput, Button, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'
-
+import AsyncStorage from '@react-native-community/async-storage';
 class TV3Entry extends Component {
     render() {
         const { hint, icon } = this.props
@@ -41,6 +41,12 @@ export default class RegisterScreen extends Component {
         };
     };
 
+    onClickConform = async () => {
+        const { username, password } = this.state
+        await AsyncStorage.setItem("username", username)
+        await AsyncStorage.setItem("password", password)
+        this.props.navigation.goBack()
+    }
 
     render() {
         return (
@@ -73,7 +79,9 @@ export default class RegisterScreen extends Component {
 
                     {/* Register */}
                     <View style={{ marginTop: 16 }}>
-                        <Button title="Register" />
+                        <Button
+                            onPress={this.onClickConform}
+                            title="Register" />
                     </View>
                     {/* Cancel */}
                     <TouchableOpacity
