@@ -76,6 +76,7 @@ export default class HomeScreen extends Component {
                             }}
                         />
                         <TextInput
+                            autoCapitalize="none"
                             keyboardType="email-address"
                             value={this.state.username}
                             onChangeText={text => this.setState({ username: text })}

@@ -55,6 +55,7 @@ export default class RegisterScreen extends Component {
                 style={{ flex: 1, flexDirection: 'column' }}>
                 {/* Login section */}
                 <View
+                    autoCapitalize="none"
                     style={{
                         backgroundColor: '#FFF3',
                         marginTop: 16,
