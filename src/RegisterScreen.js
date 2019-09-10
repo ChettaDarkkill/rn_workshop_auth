@@ -1,33 +1,47 @@
 import React, { Component } from 'react'
 import { Text, View, ImageBackground, TextInput, Button, TouchableOpacity, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 class TV3Entry extends Component {
     render() {
+        const { hint, icon } = this.props
         return (
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <View style={{
-                    height: 40,
-                    width: 40,
-                    backgroundColor: 'red',
-                    borderRadius: 20,
-                    marginRight: 8
-                }} />
-                <TextInput style={{
-                    flex: 1,
-                    height: 40,
-                    borderRadius: 3,
-                    borderWidth: 1,
-                    borderColor: "#0003",
-                    paddingLeft: 8
-                }}
-                    placeholder="Username" />
+                <Icon
+                    name={icon}
+                    size={30}
+                    style={{
+
+                    }}
+                />
+                <TextInput
+                    onChangeText={this.props.onChange}
+                    style={{
+                        flex: 1,
+                        height: 40,
+                        borderRadius: 3,
+                        borderWidth: 1,
+                        borderColor: "#0003",
+                        paddingLeft: 8
+                    }}
+                    placeholder={hint} />
             </View>
         )
     }
 }
 
-
 export default class RegisterScreen extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            username: "",
+            password: ""
+        };
+    };
+
+
     render() {
         return (
             <ImageBackground
@@ -46,8 +60,16 @@ export default class RegisterScreen extends Component {
                         borderRadius: 5,
                     }}>
 
-                    <TV3Entry />
-                    <TV3Entry />
+                    <TV3Entry
+                        icon="user"
+                        hint="Username"
+                        onChange={text => { this.setState({ username: text }) }}
+                    />
+                    <View style={{ height: 16 }} />
+                    <TV3Entry
+                        onChange={text => { this.setState({ password: text }) }}
+                        icon="lock"
+                        hint="Password" />
 
                     {/* Register */}
                     <View style={{ marginTop: 16 }}>
@@ -57,6 +79,7 @@ export default class RegisterScreen extends Component {
                     <TouchableOpacity style={{ marginTop: 8, marginBottom: 16, backgroundColor: "#fff4", height: 40, borderTopEndRadius: 5, justifyContent: "center" }}>
                         <Text style={{ textAlign: 'center', color: "#0009" }}>Cancel</Text>
                     </TouchableOpacity>
+                    <Text>{JSON.stringify(this.state)}</Text>
                 </View>
                 <Image
                     resizeMode="contain"
