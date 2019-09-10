@@ -76,7 +76,9 @@ export default class RegisterScreen extends Component {
                         <Button title="Register" />
                     </View>
                     {/* Cancel */}
-                    <TouchableOpacity style={{ marginTop: 8, marginBottom: 16, backgroundColor: "#fff4", height: 40, borderTopEndRadius: 5, justifyContent: "center" }}>
+                    <TouchableOpacity
+                        onPress={() => { this.props.navigation.goBack() }}
+                        style={{ marginTop: 8, marginBottom: 16, backgroundColor: "#fff4", height: 40, borderTopEndRadius: 5, justifyContent: "center" }}>
                         <Text style={{ textAlign: 'center', color: "#0009" }}>Cancel</Text>
                     </TouchableOpacity>
                     <Text>{JSON.stringify(this.state)}</Text>
@@ -91,3 +93,17 @@ export default class RegisterScreen extends Component {
         );
     }
 }
+
+
+RegisterScreen.navigationOptions = ({ navigation }) => {
+    return {
+        title: "Register",
+        headerStyle: {
+            backgroundColor: '#119CED'
+        },
+        headerTintColor: "#FFFFFF",
+        headerTitleStyle: { color: "#fff" },
+        headerBackTitle: " ",
+
+    };
+};
